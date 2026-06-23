@@ -1,0 +1,21 @@
+K = 15
+Overall Accuracy: 22.92%
+
+Confusion Matrix:
+[[13 13  9  7  8]
+ [ 8 20  5  7  6]
+ [10  9 13  8  7]
+ [12 12 12  4 10]
+ [20  4 10  8  5]]
+
+              precision    recall  f1-score   support
+
+   Cancelled       0.21      0.26      0.23        50
+   Delivered       0.34      0.43      0.38        46
+     Pending       0.27      0.28      0.27        47
+    Returned       0.12      0.08      0.10        50
+     Shipped       0.14      0.11      0.12        47
+
+    accuracy                           0.23       240
+   macro avg       0.21      0.23      0.22       240
+weighted avg       0.21      0.23      0.22       240

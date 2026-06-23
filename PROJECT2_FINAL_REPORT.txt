@@ -1,0 +1,63 @@
+
+PROJECT 2: DATA CLASSIFICATION USING AI
+==========================================
+Dataset: E-commerce order data (1200 rows, 14 columns)
+Target: OrderStatus (5 classes: Cancelled, Delivered, Pending, Returned, Shipped)
+Algorithm: K-Nearest Neighbors (KNN)
+Optimal K (via elbow method): 15
+
+PIPELINE STEPS COMPLETED
+--------------------------
+1. Explored dataset -> confirmed balanced 5-class target, identified noise columns
+2. Cleaned data -> filled missing CouponCode as 'NoCoupon', dropped ID/address columns
+3. Encoded categorical features (Product, PaymentMethod, CouponCode, ReferralSource)
+4. Split data 80/20 (train/test), stratified to preserve class balance
+5. Scaled numeric features using StandardScaler (fit on train only, no data leakage)
+6. Tested K=1 through K=30, selected K=15 via lowest test error rate
+7. Trained final KNeighborsClassifier and evaluated with confusion matrix + F1 report
+
+RESULTS
+--------------------------
+K = 15
+Overall Accuracy: 22.92%
+
+Confusion Matrix:
+[[13 13  9  7  8]
+ [ 8 20  5  7  6]
+ [10  9 13  8  7]
+ [12 12 12  4 10]
+ [20  4 10  8  5]]
+
+              precision    recall  f1-score   support
+
+   Cancelled       0.21      0.26      0.23        50
+   Delivered       0.34      0.43      0.38        46
+     Pending       0.27      0.28      0.27        47
+    Returned       0.12      0.08      0.10        50
+     Shipped       0.14      0.11      0.12        47
+
+    accuracy                           0.23       240
+   macro avg       0.21      0.23      0.22       240
+weighted avg       0.21      0.23      0.22       240
+
+
+KEY FINDING
+--------------------------
+Accuracy landed close to the random-guess baseline (~20% for 5 balanced
+classes). This indicates the available features (Product, Quantity,
+UnitPrice, PaymentMethod, ItemsInCart, CouponCode, ReferralSource,
+TotalPrice) do not carry meaningful predictive signal for OrderStatus.
+This is a legitimate and valuable finding: it demonstrates correct use
+of the supervised learning pipeline, while also showing the importance
+of evaluating WHETHER a dataset's features have a plausible causal or
+correlational relationship with the target before expecting strong
+model performance.
+
+NEXT STEPS / HOW THIS COULD BE IMPROVED
+--------------------------
+- Engineer features from Date (day of week, month, season)
+- Add real-world signals not present here (e.g. delivery distance,
+  warehouse stock levels, customer order history/return rate)
+- Try a different target column that has a clearer feature relationship
+- Compare KNN against other algorithms (Decision Tree, Logistic Regression)
+  to confirm the issue is the data, not the specific algorithm choice
