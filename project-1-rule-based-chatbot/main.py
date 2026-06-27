@@ -13,6 +13,23 @@ Runs in a continuous input loop until the user types 'exit', 'bye', or 'quit'.
 import re
 import csv
 
+# ---------- GREETING RESPONSES (rule-based, explicit if-else / lookup) ----------
+GREETING_RESPONSES = {
+    "hello": "Hi there! I'm the Decision Bot. Type 'help' to see what I can do.",
+    "hi": "Hello! Type 'help' to see what I can do.",
+    "hey": "Hey! Type 'help' to see what I can do.",
+    "hey there": "Hey! Type 'help' to see what I can do.",
+    "yo": "Hey! Type 'help' to see what I can do.",
+    "good morning": "Good morning! Type 'help' to see what I can do.",
+    "good afternoon": "Good afternoon! Type 'help' to see what I can do.",
+    "good evening": "Good evening! Type 'help' to see what I can do.",
+    "how are you": "I'm just code, but I'm running perfectly! Type 'help' to see what I can do.",
+    "what's up": "Not much, just waiting to evaluate applications! Type 'help' to see what I can do.",
+    "what is your name": "I'm a rule-based Decision Bot from DecodeLabs.",
+    "who are you": "I'm a rule-based Decision Bot from DecodeLabs.",
+    "thanks": "You're welcome!",
+    "thank you": "You're welcome!",
+}
 # ---------- RULE ENGINE ----------
 def evaluate_application(age, income, credit, employment, loans):
     """Apply explicit if-else business rules to decide Approved/Rejected."""
@@ -90,6 +107,7 @@ def process_csv(filename):
 if __name__ == "__main__":
     print("Decision Bot with CSV Batch Support")
     print("Commands:")
+    print("  - hello / hi / hey   (greetings)")
     print("  - apply age=XX income=XX credit=XX employment=XX loans=X")
     print("  - process filename.csv   (batch process your dataset)")
     print("  - help")
@@ -101,6 +119,10 @@ if __name__ == "__main__":
         if user_input in ["exit", "bye", "quit"]:
             print("Bot: Goodbye!")
             break
+
+        if user_input in GREETING_RESPONSES:
+            print(f"Bot: {GREETING_RESPONSES[user_input]}")
+            continue
 
         if user_input == "help":
             print("Bot: Send an application manually, or use 'process data.csv'.")
