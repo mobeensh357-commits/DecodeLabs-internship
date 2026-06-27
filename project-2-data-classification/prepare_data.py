@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 import joblib
 
-df=pd.read_csv('/home/ali-raza/PycharmProjects/decode-2/Dataset for Data Analytics - Sheet1.csv')
+df=pd.read_csv('Dataset for Data Analytics - Sheet1.csv')
 # 1. DROP NOISE COLUMNS
 df=df.drop(columns=['OrderID', 'CustomerID', 'TrackingNumber', 'ShippingAddress', 'Date'])
 # 2. HANDLE THE MISSING COUPON CODES

@@ -1,0 +1,16 @@
+age,income,credit,employment,loans
+25,50000,720,employed,0
+61,100000,800,employed,0
+30,20000,750,employed,0
+40,60000,600,employed,0
+35,45000,700,unemployed,0
+28,55000,750,self-employed,2
+18,35000,700,employed,0
+60,32000,680,employed,1
+45,100000,850,self-employed,0
+22,30000,700,employed,0
+50,40000,650,employed,0
+17,40000,700,employed,0
+55,75000,720,employed,0
+29,48000,680,self-employed,1
+33,52000,670,employed,0

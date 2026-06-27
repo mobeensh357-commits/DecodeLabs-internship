@@ -1,6 +1,6 @@
 import pandas as pd
 
-df=pd.read_csv('/home/ali-raza/PycharmProjects/decode-2/Dataset for Data Analytics - Sheet1.csv')
+df=pd.read_csv('Dataset for Data Analytics - Sheet1.csv')
 print("=" * 60)
 print("BASIC SHAPE")
 print("=" * 60)
